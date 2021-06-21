@@ -5,14 +5,13 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import RemoveRoundedIcon from '@material-ui/icons/RemoveRounded';
 
-
   const StrokeSizeStyled = styled.div`
     border-radius: 100%;
     margin-left: 2%;
   `;
 
   const IconButtonStyled = styled(IconButton)`
-    color: ${({ theme }) => theme.text};
+    color: rgb(9,11,23);
     position: static;
   `;
 
@@ -53,13 +52,15 @@ const StrokeSize = ({ strokeSize, setStrokeSize, currentColor }) => {
         >
           <AddRoundedIcon/>
         </IconButtonStyled>
-        <StrokeSizeStyled
-          style={{
-            height: `${strokeSize}px`,
-            width: `${strokeSize}px`,
-            backgroundColor: `${currentColor}`
-          }}
-        />
+        <div id="stroke">
+          <StrokeSizeStyled
+            style={{
+              height: `${strokeSize}px`,
+              width: `${strokeSize}px`,
+              backgroundColor: `${currentColor}`
+            }}
+          />
+        </div>
       </div>
     </>
   )

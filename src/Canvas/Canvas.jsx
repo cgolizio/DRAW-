@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ColorPicker from './controls/ColorPicker.jsx';
 import StrokeSize from './controls/StrokeSize.jsx';
-// import BlacklightColorPicker from './controls/BlacklightColorPicker.jsx';
+import ClearCanvas from './controls/ClearCanvas.jsx';
 
 const CanvasStyled = styled.canvas`
   border-top: 2px solid ${({ theme }) => theme.text};
@@ -12,9 +12,15 @@ const Canvas = ({ blacklightIsOn }) => {
   const [ isDrawing, setIsDrawing ] = useState(false);
   const [ strokeSize, setStrokeSize ] = useState(5);
   const [ currentColor, setCurrentColor ] = useState('#000000');
-  const [ currentShadow, setCurrentShadow ] = useState('');
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
+
+  const handleCanvasClear = () => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
+  };
 
   const startDrawing = ({ nativeEvent }) => {
     const { offsetX, offsetY } = nativeEvent;
@@ -38,10 +44,6 @@ const Canvas = ({ blacklightIsOn }) => {
     contextRef.current.stroke();
   };
 
-  // useEffect(() => {
-  //   isDrawing && setRecentColors((prev) => [currentColor, ...prev]);
-  // }, [isDrawing, currentColor]);
-
   useEffect(() => {
     const canvas = canvasRef.current;
     canvas.width = window.innerWidth * 2;
@@ -49,7 +51,6 @@ const Canvas = ({ blacklightIsOn }) => {
     canvas.style.width = `${window.innerWidth}px`;
     canvas.style.height = `${window.innerHeight}px`;
     const context = canvas.getContext('2d');
-    // context.scale(2.2);
     context.scale(2,2);
     context.lineCap = 'round';
     context.lineJoin = 'round';
@@ -61,15 +62,6 @@ const Canvas = ({ blacklightIsOn }) => {
     const context = canvas.getContext('2d');
     context.strokeStyle = currentColor;
     context.lineWidth = strokeSize;
-    // if (blacklightIsOn) {
-    //   context.shadowOffsetX = 0;
-    //   context.shadowOffsetY = 0;
-    //   context.shadowBlur=8;
-    //   context.shadowColor=currentShadow;
-    // } else {
-    //   context.shadowColor=currentColor;
-    //   context.shadowBlur=0;
-    // }
   }, [strokeSize, currentColor]);
 
   return (
@@ -84,12 +76,7 @@ const Canvas = ({ blacklightIsOn }) => {
           currentColor={currentColor}
           setCurrentColor={setCurrentColor}
         />
-        {/* <BlacklightColorPicker
-          currentColor={currentColor}
-          setCurrentColor={setCurrentColor}
-          blacklightIsOn={blacklightIsOn}
-          setCurrentShadow={setCurrentShadow}
-        /> */}
+        <ClearCanvas handleCanvasClear={handleCanvasClear} />
       </div>
       <CanvasStyled
         id='canvas'
