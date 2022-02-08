@@ -19,7 +19,8 @@ const ColorPicker = ({ currentColor, setCurrentColor }) => {
   return (
     <>
       <div id='swatch-container-local'>
-        <label htmlFor='swatch-container-local'>Choose a color</label>
+        {/* <label htmlFor='swatch-container-local'>Choose a color</label> */}
+        <label htmlFor='swatch-container-local' style={{fontSize: '2rem', color: `${currentColor}`}}>{currentColor}</label>
         <input
           type='color'
           id='color-picker'

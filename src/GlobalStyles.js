@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
@@ -22,17 +22,20 @@ const GlobalStyles = createGlobalStyle`
     height: 12%;
     width: 100%;
     padding: 0 0;
+    background: #e0e0ee;
+    box-shadow: 0px 8px 30px 5px rgba(77, 77, 77,0.69);
   }
   #stroke {
     width: fit-content;
     height: auto;
     position: absolute;
-    top: 2%;
+    top: 1.5%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
   #stroke-size-btn-container,
   #swatch-container-local{
+    /* width: 45%; */
     width: 45%;
     display: flex;
     flex-direction: row;

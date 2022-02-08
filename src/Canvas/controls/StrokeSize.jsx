@@ -36,31 +36,28 @@ const StrokeSize = ({ strokeSize, setStrokeSize, currentColor }) => {
   return (
     <>
       <div id='stroke-size-btn-container'>
-        <label htmlFor='stroke-size-btn-container'>Change brush size</label>
         <IconButtonStyled
           onClick={decreaseStrokeSize}
         >
           <RemoveRoundedIcon/>
         </IconButtonStyled>
-        <IconButtonStyled
-          onClick={resetStrokeSize}
-        >
-          <RestoreIcon/>
-        </IconButtonStyled>
-        <IconButtonStyled
-          onClick={increaseStrokeSize}
-        >
-          <AddRoundedIcon/>
-        </IconButtonStyled>
-        <div id="stroke">
-          <StrokeSizeStyled
+        <StrokeSizeStyled
             style={{
               height: `${strokeSize}px`,
               width: `${strokeSize}px`,
               backgroundColor: `${currentColor}`
             }}
           />
-        </div>
+        <IconButtonStyled
+          onClick={increaseStrokeSize}
+        >
+          <AddRoundedIcon/>
+        </IconButtonStyled>
+        <IconButtonStyled
+          onClick={resetStrokeSize}
+        >
+          <RestoreIcon/>
+        </IconButtonStyled>
       </div>
     </>
   )

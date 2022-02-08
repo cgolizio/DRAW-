@@ -5,10 +5,12 @@ import StrokeSize from './controls/StrokeSize.jsx';
 import ClearCanvas from './controls/ClearCanvas.jsx';
 
 const CanvasStyled = styled.canvas`
-  border-top: 2px solid ${({ theme }) => theme.text};
+  /* border-top: 2px solid ${({ theme }) => theme.text}; */
+  /* -webkit-box-shadow: inset 0px 0px 30px -1px rgba(33,33,33,0.69);  */
+  /* box-shadow: inset 0px 0px 30px -1px rgba(33,33,33,0.69); */
 `;
 
-const Canvas = ({ blacklightIsOn }) => {
+const Canvas = () => {
   const [ isDrawing, setIsDrawing ] = useState(false);
   const [ strokeSize, setStrokeSize ] = useState(5);
   const [ currentColor, setCurrentColor ] = useState('#000000');
